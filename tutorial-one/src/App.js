@@ -22,6 +22,9 @@ import Props3 from './R05_Props3.js';
 import 예제1번 from './R06_State1.js'; // ' ' , " "  크게 상관없음
 import 예제2번 from './R07_State2.js';
 import 예제2번Props from './R08_State3.js';
+import 예제4번 from './R09_State4.js';
+import 예제5번 from './R10_State5.js';
+import 댓글창 from './R11_State6.js';
 function App() {
   return (
     /*
@@ -65,10 +68,13 @@ function App() {
         </div>
       */}
 
-      <예제1번/>  
-      <예제2번/>
-      <예제2번Props init="50" step ="10"/>    
+      {/* <예제1번/> */}  
+      {/* <예제2번/> */}
+      {/* <예제2번Props init="50" step ="10"/> */}    
+      {/* <예제4번 init="40" years="1"/> */}
       {/* init = 처음에 시작할 숫자값 step = 몇 씩 숫자가 커지고 작아질 것인가 */}
+      <예제5번/>
+      <댓글창/>
       </div>
 
         
