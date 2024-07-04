@@ -19,6 +19,9 @@ import R02 from './R02_FunctionComponent.js';
 import Props1 from './R03_Prop.js';
 import Props2 from './R04_Props2.js';
 import Props3 from './R05_Props3.js';
+import 예제1번 from './R06_State1.js'; // ' ' , " "  크게 상관없음
+import 예제2번 from './R07_State2.js';
+import 예제2번Props from './R08_State3.js';
 function App() {
   return (
     /*
@@ -26,14 +29,16 @@ function App() {
     주석 : / * * / -> 설명이나 추가 내용을 작성할 때 사용
            {/ * * /} -> 주로 코드를 주석 처리할 때 사용
     */
+    
     <div className="App-header">
-      {/* <R01/> */}
-      {/* <R02/> */}
-      <Props1 num='1' name='홍길동' age='20' score='90'/>
-      <Props1 num='2' name='홍길은' age='30' score='80'/>
-      <Props1 num='3' name='홍길금' age='40' score='70'/>
-      <h3>Props 예제 2 번 사용하기</h3>
-      <Props2 name='강감찬' age='72' gender='남자' />
+     {/* <R01/> */}
+     {/* <R02/> */}
+       {/* <Props1 num='1' name='홍길동' age='20' score='90'/>
+     <Props1 num='2' name='홍길은' age='30' score='80'/>
+     <Props1 num='3' name='홍길금' age='40' score='70'/>
+     <h3>Props 예제 2 번 사용하기</h3>
+     <Props2 name='강감찬' age='72' gender='남자' /> 
+           */}
 
       {/* 
       - 실습 문제 -
@@ -44,10 +49,10 @@ function App() {
       R05_Props3 div 로 전체 감싸고 className = "info-ex"
       테두리 orange 색 주기
       */}
-
+ {/* 
       <h3>Props 실습 문제</h3>
       <Props3 num = '5' name = "김연정" age = "40" gender = "여자" phone = "010-1111-2222"/>
-
+ */}
 
 
       {/* 
@@ -59,7 +64,16 @@ function App() {
           이름 : 강감찬 / 나이 : 72 / 성별 : 남자
         </div>
       */}
-    </div>
+
+      <예제1번/>  
+      <예제2번/>
+      <예제2번Props init="50" step ="10"/>    
+      {/* init = 처음에 시작할 숫자값 step = 몇 씩 숫자가 커지고 작아질 것인가 */}
+      </div>
+
+        
+    
+
   );
 }
 
