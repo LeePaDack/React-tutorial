@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 
 const Game = () => {
     // 맞출 숫자를 입력하는 guess 
@@ -12,6 +13,9 @@ const Game = () => {
     const [number, setNumber] = useState(Math.floor(Math.random() * 10)+1);
     // 숫자 맞추려고 시도한 횟수 
     const [attempts, setAttempts] = useState(0);
+
+     // 사용자가 정답을 확인하면 다음단계로 이동하는 버튼이 보이게 생성
+     const [isCorrect, setIsCorrect] = useState(false); // 정답확인 전이라 false
 
     // 사용자가 숫자를 맞추려고 시도할 때마다 숫자를 세로 세팅해서 저장해놓기
     const handleChange = (e) => {
@@ -30,6 +34,7 @@ const Game = () => {
         setAttempts(attempts + 1); // 맞추려고 제출한 숫자마자 제출시도 1 씩 증가
         if(userGuess === number) {
             setMessage('축하합니다 맞추셨습니다.');
+            setIsCorrect(true);
         }
         else if (userGuess > number){
             setMessage('숫자가 너무 큽니다.');
@@ -38,8 +43,15 @@ const Game = () => {
             setMessage('숫자가 너무 작습니다.');
         }
     }
-    const handleRestart = (e) =>{
-        
+    const handleRestart = () =>{
+        // 게임을 다시 시작하기 버튼을 누르면 랜덤 숫자를 다시 생성하고
+        const newNumber = Math.floor(Math.random()* 10) +1;
+        // 모든 값 초기화
+        setNumber(newNumber); // 맞춰야할 숫자 새로 집어넣기
+        setAttempts(0); // 맞추기 위해 시도한 횟수 0 으로 초기화
+        setMessage(''); // 틀렸습니다 맞췄습니다 표시 없애주기
+        setGuess(''); // input 안에 작성한 숫자도 모두 지워주기
+        setIsCorrect(false); // 사용자가 정답 확인 전 상태로 되돌리기
     }
 return(
     <div>
@@ -55,7 +67,13 @@ return(
         </form>
         {/* message 숫자를 맞췄는지 틀렸는지 확인하는 메세지 */}
         <p>{message}</p>
-        <button onClick={handleRestart}>재시작하기</button>
+        {/* 자바스크립트에서 제일 많이 쓰는 if 문은 삼항연산자 
+         여기에표시한내용 ? true 일 때 실행할 내용 : false 일 때 실행할 내용
+         true 나 false 에서 실행할 내용이 많으면 () 로 묶어서 표현
+        */}
+
+        {isCorrect ? (<Link to="/game-twoStep"><button>다음 단계로 이동</button></Link>) : (<button onClick={handleRestart}>재시작하기</button>) }
+
     </div>
 )
 
