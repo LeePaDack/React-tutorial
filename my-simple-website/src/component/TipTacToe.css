@@ -4,10 +4,10 @@
 }
 
 .tictaptoe-grid {
-  display: grid;
+  display: grid; /* 격자 */
   grid-template-columns: repeat(3, 100px);  /* 한 줄에 3개 씩 보이게 설정 */
-  grid-gap: 10px;
-  justify-content: center;
+  grid-gap: 10px; /* 격자에 틈을 위아래로 10px 줌 */
+  justify-content: center; /* 내용물을 모두 가운데로 모이게 하기 */
 }
 
 .tictaptoe-grid2 {

@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './TipTacToe.css';
 import { Link } from "react-router-dom";
-
+/*
+useEffect(()=>{
+    // TicTapToe.js 가 실행되면 특정 기능 시작
+    
+},[])
+*/
 const 배열랜덤으로섞기 = (배열) => {
     // sort : 정렬  ->  랜덤으로 나온 값을 정렬
     // Math.random() - 0.5 : 배열을 랜덤으로 섞을 때 자주 사용  -0.5 ~ 0.5 사이 생성
