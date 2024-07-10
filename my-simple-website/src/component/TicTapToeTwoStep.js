@@ -40,7 +40,7 @@ const TicTapToeTwoStep = () => {
             ))}
         </div>
         <p>{message}</p>
-        <button onClick={재시작버튼}>재시작하기</button>
+        <button className="restart-button" onClick={재시작버튼}>재시작하기</button>
         </div>
     )
     

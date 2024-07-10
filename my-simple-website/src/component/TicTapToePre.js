@@ -30,6 +30,11 @@ const TicTapToe = () => {
             if(number === 9){
                 setMessage('축하합니다. 모든 숫자를 순서대로 클릭했습니다.');
                 setIsCorrect(true);
+
+
+                // 편법으로 2 단계 넘어가기 버튼 만들기
+                // 9 까지 왔으면 다음 숫자를 10 으로 만들어줌
+                // setNextNumber(nextNumber + 1);
             }
             else {
                 setNextNumber(nextNumber + 1);
@@ -60,7 +65,9 @@ const TicTapToe = () => {
             </div>
             <p>{message}</p>
             {/* 수를 모두 맞출 경우에만 다음단계로 이동버튼 보여주기 */}
-            {isCorrect ? (<Link to="/ttt-twoStep"><button>다음 단계로 이동</button></Link>) : (<button onClick={재시작버튼}>재시작하기</button>)}
+            {/* {nextNumber > 9 && (<Link to="/ttt-twoStep"><button>다음 단계로 이동</button></Link>)} */}
+            {/* 다음 단계로 이동 버튼이 나오기 위해서 nextNumber 숫자 값이 10 일 때 다음 단계로 이동 버튼 나오기 */}
+            {isCorrect ? (<Link to="/ttt-twoStep"><button className="restart-button">다음 단계로 이동</button></Link>) : (<button className="restart-button" onClick={재시작버튼}>재시작하기</button>)}
             
             
         </div>
