@@ -10,6 +10,13 @@
   justify-content: center;
 }
 
+.tictaptoe-grid2 {
+  display: grid;
+  grid-template-columns: repeat(6, 100px);
+  grid-gap: 10px;
+  justify-content: center;
+}
+
 .tictaptoe-button {
   width: 100px;
   height: 100px;
@@ -20,4 +27,11 @@
   border: none;
   border-radius: 8px;
   transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+}
+
+.tictaptoe-button:hover {
+  background-color: #154717;
+}
+.tictaptoe-button:active {
+  background-color: rgb(136, 255, 142);
 }

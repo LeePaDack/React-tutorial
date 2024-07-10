@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './TipTacToe.css';
+import { Link } from "react-router-dom";
 
 const 배열랜덤으로섞기 = (배열) => {
     // sort : 정렬  ->  랜덤으로 나온 값을 정렬
@@ -28,6 +29,7 @@ const TicTapToe = () => {
         if (number === nextNumber) {
             if(number === 9){
                 setMessage('축하합니다. 모든 숫자를 순서대로 클릭했습니다.');
+                setIsCorrect(true);
             }
             else {
                 setNextNumber(nextNumber + 1);
@@ -44,6 +46,8 @@ const TicTapToe = () => {
         setNextNumber(1);
     }
 
+    const [isCorrect, setIsCorrect] = useState(0);
+
     return(
         <div className="tictaptoe-container">
             <h1>틱 탭 토</h1>
@@ -55,7 +59,10 @@ const TicTapToe = () => {
                 ))}
             </div>
             <p>{message}</p>
-            <button onClick={재시작버튼}>재시작하기</button>
+            {/* 수를 모두 맞출 경우에만 다음단계로 이동버튼 보여주기 */}
+            {isCorrect ? (<Link to="/ttt-twoStep"><button>다음 단계로 이동</button></Link>) : (<button onClick={재시작버튼}>재시작하기</button>)}
+            
+            
         </div>
     )
 
