@@ -12,6 +12,7 @@ const NavBar = () => {
                     1 단계 통과해야 2단계 링크를 보여줄 것이기 때문
                 */}
                 <li><Link to="todoList">할 일 목록 작성하기</Link></li>
+                <li><Link to="TicTapToe">틱탭토 게임</Link></li>
             </ul>
         </nav>
     )
