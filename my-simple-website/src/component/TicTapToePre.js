@@ -36,7 +36,7 @@ const TicTapToe = () => {
         if(timer > 0){
             countdown = setTimeout(() => {
                 setTimer(timer -1);
-            },  500);
+            },  1000);
         } else if (timer === 0){
             alert("시간 초과! 게임이 종료되었습니다.");
         }
