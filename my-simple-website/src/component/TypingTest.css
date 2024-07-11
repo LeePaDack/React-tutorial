@@ -1,0 +1,45 @@
+.typing-test{
+    text-align: center;
+    margin-top: 50px;
+}
+.typing-test p {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.typing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.typing-test textarea {
+    width: 352px; height: 134px;
+    border-radius: 10px;
+    /* 사용자가 텍스트 영역 크기 변경을 막아줌 */
+    resize: none;
+    font-size: 15px;
+}
+.character-image {
+    border: 1px solid black;
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+}
+.result {
+    margin-top: 20px;
+}
+
+.typing-test button{
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: yellowgreen;
+    color: black;
+    cursor: pointer;
+}
+.typing-test button:hover {
+    background-color: rgb(107, 147, 27);
+    color: blanchedalmond;
+}
