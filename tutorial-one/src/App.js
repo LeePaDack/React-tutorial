@@ -30,6 +30,14 @@ import 컨텍스트2 from './component/R13_Context2.js';
 import 컨텍스트3 from './component/R15_Context3/Parent.js';
 import 부트스트랩1 from './component/R14_BootStrap.js';
 import 실습컨텍스트4 from './component/R16_Contest4/최종출력공간.js';
+import Ref예제1번 from './component/R19_useRef.js';
+import Ref예제2번 from './component/R20_useRefInput.js';
+import Ref예제3번 from './component/R21_useRefSignUp.js';
+import Ref예제4번 from './component/R22_useRefEx.js';
+import Dodgegobelin from './component/R23_Dodgegobelin/Dodgegobelin.js';
+
+// R22_useRefEx -> {RefEx as Ref예제4번}
+// import {RefEx as Ref예제4번} from './component/R22_useRefEx.js';
 function App() {
   return (
     /*
@@ -82,9 +90,11 @@ function App() {
       {/*  <댓글창/>  */}
       {/* <컨텍스트1></컨텍스트1> */}
       {/* <컨텍스트2/>*/}
-      <컨텍스트3/>
-      <실습컨텍스트4/>
+      {/* <컨텍스트3/> */}
+      {/* <실습컨텍스트4/> */}
       {/* <부트스트랩1/> */}
+      {/* <Ref예제1번/> */}
+      <Dodgegobelin/>
       </div>
 
         
