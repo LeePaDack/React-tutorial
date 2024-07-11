@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 // npm install axios
 
 const Axios_Ex1 = () => {
     const [data, setData] = useState(null);
 
-    const 불러오기버튼 = () => {
-        axios.get("https://jsonplaceholder.typicode.com/todos")
+
+    useEffect  (() => {  
+        axios.get("https://jsonplaceholder.typicode.com/todos") // axios.get("https://스프링부트:8080/상세보기/아이디값")
             // 무사히 잘 가져왔다면 then 으로 data 값 변경
             .then(res => {
                 setData(res.data);
@@ -15,14 +16,22 @@ const Axios_Ex1 = () => {
             .catch( () => {
                 alert("데이터를 가져오는데 실패했습니다.");
             });
-    }
+    }, []);
 
     return (
         <>
-            <h1>버튼을 클릭하면 json 안에 작성된 내용 가져오기</h1>
+            <h1>json 안에 작성된 내용 가져오기</h1>
             
-            <button onClick={불러오기버튼}>불러오기</button>
-            {data && <textarea rows={20} cols={80} value={JSON.stringify(data, null, 2)} readOnly={true}/>}
+            <ul>
+                {todos.map(todo => (
+                    <li key={todo.userId}>
+                        <strong>UserId :</strong>{userId ? 'Yes' : 'No'} <br></br>
+                        <strong>Id :</strong>{} <br></br>
+                        <strong>Title :</strong>{} <br></br>
+                        <strong>Completed :</strong>{} <br></br>
+                    </li>
+                ))}
+            </ul>
         </>
     )
 }
