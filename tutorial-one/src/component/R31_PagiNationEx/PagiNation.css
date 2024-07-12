@@ -1,0 +1,5 @@
+.page-item.active {
+    background-color: rgb(91, 123, 255);
+    color: white;
+    border: 1px solid rgb(91, 123, 255);
+}
