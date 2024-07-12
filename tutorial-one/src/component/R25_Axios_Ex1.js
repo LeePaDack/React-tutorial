@@ -3,14 +3,14 @@ import axios from 'axios';
 // npm install axios
 
 const Axios_Ex1 = () => {
-    const [data, setData] = useState(null);
+    const [todos, setData] = useState(null);
 
 
     useEffect  (() => {  
         axios.get("https://jsonplaceholder.typicode.com/todos") // axios.get("https://스프링부트:8080/상세보기/아이디값")
             // 무사히 잘 가져왔다면 then 으로 data 값 변경
             .then(res => {
-                setData(res.data);
+                setData(res.todos);
             })
             // 가져오는데 실패했다면 에러 보여주기
             .catch( () => {
@@ -24,9 +24,9 @@ const Axios_Ex1 = () => {
             
             <ul>
                 {todos.map(todo => (
-                    <li key={todo.userId}>
-                        <strong>UserId :</strong>{userId ? 'Yes' : 'No'} <br></br>
-                        <strong>Id :</strong>{} <br></br>
+                    <li key={todo.id}>
+                        <strong>UserId :</strong>{todo.id ? 'Yes' : 'No'} <br></br>
+                        <strong>Title :</strong>{todo.title} <br></br>
                         <strong>Title :</strong>{} <br></br>
                         <strong>Completed :</strong>{} <br></br>
                     </li>
