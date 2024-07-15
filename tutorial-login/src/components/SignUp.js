@@ -1,8 +1,11 @@
 import React, {useState} from "react";
+import '../App.css';
 
 const Signup = () => {
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
+    const [pwCheck, setPwCheck] = useState('');
+    const [name, setName] = useState('');
     const [result, setResult] = useState('');
 
     // 아이디중복검사
@@ -48,11 +51,19 @@ const Signup = () => {
             return;
         }
         // 비밀번호, 비밀번호 확인이 일치하지 않으면 가입 X
+        if(pw !== pwCheck){
+            alert('비밀번호가 같지 않습니다.');
+            return;
+        }
+
+
+
 
         // 회원가입 비동기 요청
         const input값들 = {};  // 처음엔 들어온 값이 없으니 빈공간으로 설정
         input값들.id = id; // id 값이 들어오면 input 값들에 id 값을 작성해달라 설정
         input값들.pw = pw; // pw 값이 들어오면 input 값들에 pw 값을 작성해달라 설정
+        input값들.name = name;
         // 만약 input 에 id 값으로 khT 를 작성하고, pw 값으로 khT1234 를 작성하면
         /* 
         const input값들 = {            };  에서 아래와 같이 변경됨
@@ -114,6 +125,22 @@ const Signup = () => {
                 <input type="password"
                     onChange={e => {setPw(e.target.value)}}
                     value={pw}
+                />
+            </label>
+
+            <label>
+                PW CHECK : 
+                <input type="password"
+                    onChange={e => {setPwCheck(e.target.value)}}
+                    value={pwCheck}
+                />
+            </label>
+
+            <label>
+                NAME : 
+                <input type="text"
+                    onChange={e => {setName(e.target.value)}}
+                    value={name}
                 />
             </label>
 

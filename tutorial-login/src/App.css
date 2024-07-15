@@ -14,3 +14,22 @@
   width: 300px;
   padding: 10px;
 }
+
+.signup-container > label {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.signup-container > label > input{
+  flex-basis: 65%;
+}
+
+.signup-container > button {
+  width: 100%;
+}
+
+.id-err {
+  color: red;
+  font-weight: bold;
+}

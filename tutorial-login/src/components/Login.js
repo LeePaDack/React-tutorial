@@ -5,7 +5,7 @@ const Login = () => {
     // App.js 에 작성한 Context 에서 .
     // loginMember 와 오른쪽에 작성한 LoginContext 에 키가 일치하는 값을 가져와 대입
     // 만약 로그인한 값이 없으면 로그인화면으로 이동
-    const {loginMember, setLoginMember} = useContext("LoginContext");
+    const {loginMember, setLoginMember} = useContext(LoginContext);
 
     /* 아이디, 비밀번호 상태 변수 */
     const [id, setId] = useState('');
@@ -27,6 +27,7 @@ const Login = () => {
                     // 로그인 실패시
                     if(map.loginMember === null){
                         alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+                        return;
                     }
                     // 로그인 성공 시
                     setLoginMember(map.loginMember);
@@ -46,7 +47,7 @@ const Login = () => {
                     <tr>
                         <th>ID</th>
                         <td>
-                            <input type="text" onChange={e=>setId(e.target.value)}
+                            <input type="text" onChange={(e)=>setId(e.target.value)}
                             value={id}/>
                         </td>
                     </tr>

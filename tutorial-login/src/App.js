@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import LoginContext from './components/LoginContext';
 import Signup from './components/SignUp';
+import Login from './components/Login';
 
 /* 현재 App.js 는 제일 위에 있는 컴포넌트(객체) */
 function App() {
@@ -12,8 +13,8 @@ function App() {
   return (
 
     <LoginContext.Provider value={{loginMember, setLoginMember}}>
-      <button onClick={() => {setSignUpView(!setSignUpView)}}>
-        {setSignUpView ? ('회원가입 닫기') : ('회원가입 열기')}
+      <button onClick={() => {setSignUpView(!signUpView)}}>
+        {signUpView ? ('회원가입 닫기') : ('회원가입 열기')}
       </button>
       {/* 회원가입 화면 */}
       <div className='signup-wrapper'>
@@ -24,6 +25,7 @@ function App() {
       </div>
       <h1>Todo List</h1>
       {/* 로그인을 해야 TodoList 확인가능 */}
+      <Login/>
 
 
       {/* value={} => 하나의 값만 작성 
