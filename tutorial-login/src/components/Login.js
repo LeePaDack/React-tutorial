@@ -19,8 +19,9 @@ const Login = () => {
                 // 사용자 -> 서버에 로그인한 정보가 일치하는게 있는지 확인
                 "Content-Type" : "application/json", 
                 // 서버 -> 사용자한테 사용자가 작성한 정보가 존재하는지에 대한 존재여부 전달
-                "Accept" : "application/json",
+                "Accept" : "application/json"},
                 body : JSON.stringify({id : id, pw : pw}) // 본문으로 id pw 작성된 내용 전달
+            })
                 .then(response => response.json())
                 .then(map => {
                     console.log(map);
@@ -35,15 +36,22 @@ const Login = () => {
                     // id,pw 값 모두 지우기
                     setId('');
                     setPw('');
+                    alert('로그인 성공');
                 })
+                
             }
            
-        })
+        
+    /* 로그아웃 이벤트 핸들러 */
+    const 로그아웃버튼 = () => {
+        setLoginMember(null);
     }
+
+
     return(
         <div className="login-container">
             <table>
-                <tboay>
+                <tbody>
                     <tr>
                         <th>ID</th>
                         <td>
@@ -61,13 +69,18 @@ const Login = () => {
                             <button onClick={로그인버튼}>로그인</button>
                         </td>
                     </tr>
-                </tboay>
+                </tbody>
             </table>
+
+            {/* loginMember 가 null 이 아닌 경우 로그아웃 버튼 보이게 하기 */}
+            {loginMember &&(
+                <button onClick={로그아웃버튼}>로그아웃</button>
+            )}
         </div>
-    )
+    );
 
 
 
-}
+};
 
 export default Login;

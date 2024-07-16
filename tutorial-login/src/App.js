@@ -28,6 +28,10 @@ function App() {
       {/* 로그인을 해야 TodoList 확인가능 */}
       <Login/>
 
+    <hr/>
+    {/* 로그인이 되었을 때 로그인한 회원의 TodoList 출력 
+      {loginMember && (TodoList.js import 하기)}
+    */}
 
       {/* value={} => 하나의 값만 작성 
           value={{}} => 두가지 이상의 값을 작성
