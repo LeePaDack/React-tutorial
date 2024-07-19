@@ -64,3 +64,37 @@ nav ul li a:hover{
   background-color: #575757;
   border-radius: 4px;
 }
+
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: fixed; /* 고정 처리 */
+  width: 100%;
+  bottom: 0; /* 바닥에 남은 잔여 값이 없도록 */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
