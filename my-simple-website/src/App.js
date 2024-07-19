@@ -1,16 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 import Game from "./component/Game";
 import GameTwoStep from './component/GameTwoStep';
 import { Routes, Route } from 'react-router-dom';
 import Home from './component/Home';
-import NavBar from './component/NavBar';
-import Header from './component/Header';
+import NavBar from './component/Layout/NavBar';
+import Header from './component/Layout/Header';
+import Footer from './component/Layout/Footer';
 import TodoList from './component/TodoList';
-import TicTapToe from './component/TicTapToePre';
-import TicTapToeTwoStep from './component/TicTapToeTwoStep';
+import TicTapToe from './component/TicTapToe/TicTapToePre';
+import TicTapToeTwoStep from './component/TicTapToe/TicTapToeTwoStep';
 import TypingTest from './component/TypingTest';
 import MovieRating from './component/Movie/MovieGrade';
+/* Layout
+
+Module not found: Error: Can't resolve './component/Header' ===> 에러가 발생한 파일 위치 App.js 에서 해다 파일 위치 찾을 수 없음이라는 에러 발생
+in 'C:\Users\user1\react-workspace\my-simple-website\src'
+
+ERROR in ./src/App.js 10:0-40  에러가 발생한 파일 위치
+*/
 
 function App() {
   return (
@@ -27,6 +34,8 @@ function App() {
         <Route path='/typingTest' element={<TypingTest/>}/>
         <Route path='/movieRate' element={<MovieRating/>}/>
       </Routes>
+
+      <Footer/>
     </div>  
   );
 }
