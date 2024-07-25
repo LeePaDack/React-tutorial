@@ -4,7 +4,7 @@ const DateInput = () => {
   // minDate와 maxDate 상태를 정의
   const [minDate, setMinDate] = useState('');
   const [maxDate, setMaxDate] = useState('');
-
+  
   useEffect(() => {
     // 주어진 날짜를 KST로 변환하여 ISO 형식의 날짜 문자열을 반환하는 함수
     const getKSTDateString = (date) => {

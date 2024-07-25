@@ -1,6 +1,7 @@
 import './App.css';
 import Date from '../src/component/date.js';
 import Date2 from '../src/component/date2.js';
+import ResTime from '../src/component/reservationTime.js';
 
 function App() {
   return (
@@ -9,6 +10,8 @@ function App() {
       <Date/>
       <h1>---------------</h1>
       <Date2/>
+      <h1>----------------</h1>
+      <ResTime/>
     </div>
   );
 }
