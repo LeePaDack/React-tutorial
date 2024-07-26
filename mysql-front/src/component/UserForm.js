@@ -7,7 +7,12 @@ const UserForm = ({addUser}) => {
     const handleSubmit = (e) => {
         e.preventDefault(); // 잠시 제출 방지
         addUser({name, email});
+
+        setEmail('');  // input 에 작성한 내용을 제출하고 작성한 이메일 초기화 (입력후)
+        setName(''); //  '' 이름 초기화
     }
+
+
     return(
         <div>
             <form onSubmit={handleSubmit}>

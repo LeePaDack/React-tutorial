@@ -12,10 +12,18 @@ function App() {
 
   // 특정변수명이 존재한다면 특정변수명에 변화가 있을 때마다 기능이 실행
   // useEffect(() => {기능}, [특정변수명]);
-
+  
+  /****** use effect 최초 1 회만 실행 
   useEffect(() => {
     모든유저보기(); // 홈페이지 들어오면 최초 1 회로 유저들이 보이고,
   }, []); // [ ] 비어있기 때문에 홈페이지가 보일 때 딱 한번만 실행됨
+  *******/
+
+    /****** use effect 에 users 를 넣어서 유저목록에 변화가 발생하면 모두 불러오기 기능을 다시 실행 *******/
+    useEffect(() => {
+      모든유저보기(); // users = 유저 목록에 유저가 추가되거나 삭제되는 일이 발생하면 모든 유저 다시보기가 됨
+    }, [/* users*/ ]); // [ ] 에 users 가 들어있기 때문에 유저 목록에 유저가 추가되거나 삭제될 경우 유저 목록 새로고침
+
 
 /*
   const 모든유저보기 = () => {
@@ -52,13 +60,14 @@ function App() {
     setUsers(응답.data); // 가져오는데 성공하면 가져온 데이터로 유저목록을 만들어주는 것
   }
 */
-
+/**** 모든 유저 보는 기능 ****/
   // async await 버전 사용
   const 모든유저보기 = async() => {
     const res = await axios.get('/users');
     setUsers(res.data);
   };
 
+  /**** 유저 추가 버튼 ****/
   // async   await 사용해서 유저 추가하기   addUser 에서 가져온 user 한명 넣어주기
   const addUser = async(user) => {
     const res = await axios.post('/users', user); // controller PostMapping 으로 전달하는 유저 정보
@@ -66,11 +75,54 @@ function App() {
     setUsers([...users], res.data);
   }
 
+  /**** 유저 삭제 버튼 ****/
+  const deleteUser = async (id) =>{
+    /*
+    "" '' : 모두 글자 취급
+    ``    : 글자 안에 특정 값을 변수명으로 취급해야할 때
+            `` 안에서 변수명을 처리해야하는 값은 ${} 사용한다음
+            ${융통성있게 변경되어야하는 변수명} 작성  
+
+    Ex)
+    ""  ''
+    http://localhost:3000/users?id=${id}
+    
+    ``
+    http://localhost:3000/users?id=3
+    */
+    await axios.delete(`/users?id=${id}`);
+    /*
+    자바 컨트롤러에서 @DeleteMapping("/{id}") 매개변수 = 파라미터에 (@PathVariable int id) 작성
+    리엑트 axois 에서 id=${id} 이다
+    나중에 주소값에 id 대신 삭제할 번호가 들어갈 수 있도록 설정
+    자바 컨트롤러에서 @DeleteMapping() 에 특정 id 값을 설정하지 않을 경우
+    매개변수 = 파라미터에 (@RequestParam(value="id") int id) // (value="id") = 프론트엔드에서 가져온 id 값
+    param: {id}
+    await axios.delete(`/users`, {params:{id} });
+    */
+
+
+    setUsers(users.filter(user => user.id !== id));
+  }
+
+    /*
+    setUsers(users.filter(user => user.id != id));
+    users : 현재 저장되어 있는 유저들 리스트
+    user.id != id : user.id 유저 아이디와 id(삭제하고자 하는 유저 아이디)가 일치하지 않으면
+    setUsers (새로운 유저 목록)에 포함시키고 
+    id(삭제하고자 하는 유저 아이디) 와 user.id 가 일치하는 아이디는 삭제한 다음
+
+    setUsers(새로운 유저목록) 을 완성시킨다
+    
+    filter 유저목록 걸러내기 기능
+    filter : 조건
+    */
+
   return (
     <div className="App">
       <h1>유저 관리하기</h1>
       <UserForm addUser={addUser}/>
-      <UserTable users={users}/>
+      <UserTable users={users} deleteUser={deleteUser}/>
     </div>
   );
 }
