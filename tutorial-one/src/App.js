@@ -107,9 +107,9 @@ function App() {
       <Fetch예제2번/>
        <Board/>
      <Album/>
-      */}
+      */}<Board/>
      
-     <Profile/>
+     {/* <Profile/> */}
     
       
       </div>
