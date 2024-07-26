@@ -33,7 +33,9 @@ const UserTable = ({users,deleteUser}) => {
                         <td>
                             <button onClick={() => deleteUser(user.id)}>유저 삭제하기</button>
                             &nbsp; &nbsp; &nbsp;
-                            <button>유저 수정하기</button>
+                        </td>
+                        <td>
+                            <button>정보 수정하기</button>
                         </td>
                     </tr>
                 ))}
