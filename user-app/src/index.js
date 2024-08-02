@@ -4,13 +4,14 @@ import './index.css';
 import UserList from './UserList';
 import reportWebVitals from './reportWebVitals';
 import TodoList from './TodoList';
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <UserList />
     <TodoList/>
-  </React.StrictMode>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
