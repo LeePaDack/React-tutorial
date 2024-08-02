@@ -5,12 +5,14 @@ import UserList from './UserList';
 import reportWebVitals from './reportWebVitals';
 import TodoList from './TodoList';
 import { BrowserRouter } from "react-router-dom";
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <UserList />
     <TodoList/>
+    <App/>
   </BrowserRouter>
 );
 
