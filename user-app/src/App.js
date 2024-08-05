@@ -1,87 +1,43 @@
-import { useState } from "react";
-import User from './user';
-import './index.css';
-import EditForm from './EditForm';
+import React from "react";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import MemberList from "./MemberList";
+import UserList from "./UserList";
+import TodoList from "./TodoList";
+// BrowserRouter 가 길기 때문에 Router 라는 이름으로 줄이겠다.
+// as Router -> as : alias 약자
 
-function App() {
-  // 빈 목록들
-  // const [userList, setUserList] = useState([]);
-
-  // DB 에서 가져올 목록이 없거나 초기에 예제 목록을 작성할 때 사용하는 방법
-  const [userList, setUserList] = useState([
-    { name: "유저1", age: 24, gender: "남자", phone: "010-2732-2241" },
-
-    { name: "유저2", age: 27, gender: "여자", phone: "010-2674-0093" },
-
-    { name: "유저3", age: 30, gender: "남자", phone: "010-3784-2834" },
-  ]);
-  const [editUser, setEditUser] = useState(null);
-  // useState(null); = useState(""); = useState(''); 빈 값 처리 
-
-  /*
-  1 ) 삼항 연산자를 이용하지 않고 수정하기
-  const updateUser = (editUser) => {
-    setUserList(userList.map(
-      user => updateUser));
-  }
-
-
-  2 ) 삼항 연산자를 이용한 수정하기
-  const updateUser = (editUser) => {
-    setUserList(userList.map(
-      user => (user === editUser ? updateUser : user)
-    )); // 유저 수정하기 버튼을 누르면 유저 수정을 진행
-  }
-  */
-
-  const updateUser = (updateUser) => {
-    setUserList(userList.map(
-      user => (user === editUser ? updateUser : user)
-    )); // 유저 수정하기 버튼을 누르면 유저 수정을 진행
-    setEditUser(null);
-  }
-
-  return (
-    <div className="App">
-      <h1>회원 정보 출력</h1>
-
-      <hr></hr>
-
-      <table className="member_tbl">
-        <thead>
-          <tr>
-            <th>이름</th>
-
-            <th>나이</th>
-
-            <th>성별</th>
-
-            <th>전화번호</th>
-
-            <th>삭제</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {userList.map((item, index) => (
-            <User
-              key={"user" + index}
-              user={item}
-              userList={userList}
-              setUserList={setUserList}
-              setEditUser={setEditUser}
-            />
-          ))}
-        </tbody>
-      </table>
-      {/* 만약에 수정하겠다 라는 버튼의 동작이 들어오면 수정하는 JS 파일을 보여주자 */}
-      {editUser && (
-        <EditForm user={editUser} updateUser={updateUser} />
-      )}
-    </div>
-  );
+console.log("hihi") // 1. hihi 가 먼저 시작되고 진행됨
+// function 은 위치를 타지 않음
+// const 는 () {} 밑에 작성해야함
+function App () {
+    return(
+        <div>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<UserList/>}/>
+                    <Route path="/MemberList" element={<MemberList/>}/>
+                    <Route path="/todo" element={<TodoList/>}/>
+                </Routes>
+            </Router>
+        </div>
+    )
 }
 
-
-
 export default App;
+
+/*
+function App() {}
+- index 다음에 특정 js 가 최상위에서 시작할 때 function
+- function 이 제일 먼저 기능이 되진 않음
+- function 위에 다른 코드가 와도 문제없음
+
+const App () => {}
+- 자신이 js 코드 작성한 페이지에서 최상위
+- 이외에는 모두 const 사용
+- const 이전에 console.log("hihi");  나 다른 코드 작성을 지양
+const 로 가장 중점이 되는 코드를 선언해준 다음에
+console.log("hihi");
+다른 기능을 작성
+
+
+*/

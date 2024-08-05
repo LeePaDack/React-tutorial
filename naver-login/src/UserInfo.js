@@ -68,6 +68,7 @@ function UserInfo() {
             <div>
                 <h2>회원가입에 필요한 아이디 및 비밀번호 작성하기</h2>
                 <input type="text" />
+                <input type="password"/>
             </div>
         </>
     )
