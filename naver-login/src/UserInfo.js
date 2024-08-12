@@ -7,6 +7,10 @@ useLocation : URL 의 정보를 포함한 객체
 */
 function UserInfo() {
     const [userInfo, SetUserInfo] = useState(null);
+    /***** 2024-08-12 비밀번호 값 설정 추가 *****/
+    const [password,setPassword] = useState(""); // 비밀번호 상태 추가
+    /*****                             ******/
+
     const location = useLocation();
     const [loading, setLoading] = useState(true);
     // 어떤 클릭이 없어도 UserInfo 페이지 들어오면 자동으로 실행되는 효과
@@ -45,6 +49,37 @@ function UserInfo() {
         return <div>데이터 정보 가져오는 중...</div>
     }
 
+    // 회원가입기능 만들기 React 에서 Java 로 데이터를 보낼 것
+    // 데이터를 어디서 보낼 것이냐면 /NaverAPI/register 위치에서 만나 데이터를 주고 받을 것
+    const 회원가입기능 = () => {
+        // 비밀번호 비어있으면 
+        if (!password) { // !password = 비밀번호가 없다
+            alert("비밀번호를 입력해주세요");
+            return;
+        }
+
+        // 물건같은 데이터를 특정 장소에 전달하러가기
+        // axios.post(어디서 만날 것인지 특정 위치 설정, {주고 받을 데이터 설정}) 
+        // axios.post('http://서울특별시/강남구/역삼역', {아이디, 이메일, 비밀번호 를 전달할 것})
+        axios.post('http://localhost:9010/NaverAPI/register', {
+            id : userInfo.response.id,
+            email : userInfo.response.email,
+            nickname : userInfo.response.nickname,
+            name : userInfo.response.name,
+            gender : userInfo.response.gender,
+            profileImage: userInfo.response.profile_image,
+            password: password
+        })
+        .then(response => {
+            console.log(response.data); // 개발자가 무사히 DB 에 들어갔는지 확인
+            alert("회원가입이 완료되었습니다.") // 클라이언트가 무사히 회원가입을 완료했는지 확인
+        })
+        .catch(e =>{
+            console.error('개발자가 에러 확인 하는 공간 ',e)
+            alert("회원가입에 실파했습니다.");
+        })
+    }
+
     return (
         <>
             <h1>유저정보</h1>
@@ -67,8 +102,18 @@ function UserInfo() {
             )}
             <div>
                 <h2>회원가입에 필요한 아이디 및 비밀번호 작성하기</h2>
-                <input type="text" />
-                <input type="password"/>
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+
+                {/*
+                <input type="password" value={password} onChange={비밀번호변경하기}/>
+                
+                const 비밀번호변경하기 = () => {
+                    setPassword(e.target.value)
+                }
+                */}
+
+                <button onClick={회원가입기능}>회원가입하기</button>
+                {/* <button onClick={handle회원가입기능}>회원가입하기</button> */}
             </div>
         </>
     )
